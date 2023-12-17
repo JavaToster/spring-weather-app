@@ -23,7 +23,7 @@ public class PostControllers {
         this.updates = updates;
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login1")
     public String login(@RequestBody String json){
         JSONObject object = new JSONObject(json);
         String username = object.getString("username");
@@ -38,7 +38,7 @@ public class PostControllers {
         return object.toString();
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register1")
     public String register(@RequestBody String json){
         JSONObject object = new JSONObject(json);
         String username = object.getString("username");

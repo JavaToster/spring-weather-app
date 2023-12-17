@@ -6,24 +6,24 @@
   <link rel="stylesheet" type="text/css" href="../css/registerStyles.css">
 </head>
 <body>
-<div class="register-container">
-  <h1>Register</h1>
-  <div class="input-container">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" required>
+<form th:method="POST" th:action="@{/register}" th:object="${person}">
+  <div class="register-container">
+    <h1>Register</h1>
+    <div class="input-container">
+      <label for="username">Username</label>
+      <input type="text" id="username" th:field="*{username}">
+    </div>
+    <p id="error-message-one" style="color:red;" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+    <div class="input-container">
+      <label for="password">Password</label>
+      <input type="password" id="password" th:field="*{password}">
+    </div>
+    <p id="error-message-two" style="color:red;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+    <button onclick="register()" class="button" id="register">Register</button>
+    <input type="submit" value="Register"/>
+    <button id="toLogin" class="button" onclick="window.open('/login')">Login</button>
   </div>
-  <div class="input-container">
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-  </div>
-  <div class="input-container">
-    <label for="confirm-password">Confirm Password</label>
-    <input type="password" id="confirm-password" name="confirm-password" required>
-  </div>
-  <p id="error-message" style="color:red;" th:text="${text}"></p>
-  <button onclick="register()" class="button" id="register">Register</button>
-  <button id="toLogin" class="button" onclick="window.open('/login')">Login</button>
-</div>
+</form>
 <script src="../js/registerScript.js"></script>
 </body>
 </html>

@@ -3,12 +3,19 @@ package spring.app.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import spring.app.DATABASE.GetInfo;
 import spring.app.DATABASE.Updates;
+import spring.app.models.Person;
+import spring.app.util.PersonLoginningValidator;
+import spring.app.util.PersonValidator;
 import spring.app.weather.addWeatherToDatabase.AddInfoToDatabase;
 import spring.app.weather.mainWeather.Weather;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -20,6 +27,16 @@ public class Controllers {
     private boolean thread = true;
     private Updates updates;
     private GetInfo getInfo;
+
+    private PersonValidator personValidator;
+
+    private PersonLoginningValidator personLoginningValidator;
+    @Autowired
+    public void setPersonValidator(PersonValidator personValidator) {
+        this.personValidator = personValidator;
+    }
+    @Autowired
+    public void setPersonLoginningValidator(PersonLoginningValidator personLoginningValidator){ this.personLoginningValidator = personLoginningValidator; }
 
     @Autowired
     public void setGetInfo(GetInfo getInfo) {
@@ -100,13 +117,55 @@ public class Controllers {
     }
 
     @GetMapping("/login")
-    public String loginWindow() {
+    public String loginWindow(Model model) {
+        model.addAttribute("person", new Person());
+
         return "/html/login";
     }
 
     @GetMapping("/register")
-    public String registerWindow(){
+    public String registerWindow(Model model){
+        model.addAttribute("person", new Person());
+
         return "/html/register";
+    }
+
+    @PostMapping("/register")
+    public String register(@ModelAttribute("person") @Valid Person person,
+                           BindingResult bindingResult, HttpServletResponse response){
+
+        personValidator.validate(person, bindingResult);
+
+        if(bindingResult.hasErrors()){
+            return "/html/register";
+        }
+
+        Cookie cookie = new Cookie("username", person.getUsername());
+
+        cookie.setMaxAge(60*60*24);
+
+        response.addCookie(cookie);
+
+        return "redirect:/weather";
+    }
+
+    @PostMapping("/login")
+    public String login(@ModelAttribute("person") @Valid Person person,
+                        BindingResult bindingResult, HttpServletResponse response){
+
+        personLoginningValidator.validate(person, bindingResult);
+
+        if(bindingResult.hasErrors()){
+            return "/html/login";
+        }
+
+        Cookie cookie = new Cookie("username", person.getUsername());
+
+        cookie.setMaxAge(60*60*24);
+
+        response.addCookie(cookie);
+
+        return "redirect:/weather";
     }
 
     public void startThread(){

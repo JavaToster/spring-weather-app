@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Login</title>
-  <meta charset="utf-8">
- <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <title>Login</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
 </head>
 <body>
- <div class="login-container">
-    <h1>Login</h1>
-      <div class="input-container">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
-      </div>
-      <div class="input-container">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-      </div>
-      <p id="error-message" style="color:red;" th:text="${text}">Hello</p>
-      <button id="login" class="button" onclick="login()">Login</button>
-      <button id="toRegister" class="button" onclick="window.open('/register')">Register</button>
- </div>
+<form th:method="POST" th:action="@{/login}" th:object="${person}">
+    <div class="login-container">
+        <h1>Login</h1>
+        <div class="input-container">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <p id="error-message-one" style="color:red;" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+        <div class="input-container">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <p id="error-message-two" style="color:red;" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+        <input type="submit" value="Login"/>
+        <button id="toRegister" class="button" onclick="window.open('/register')">Register</button>
+    </div>
+</form>
 <script src="../js/login.js"></script>
 </body>
 </html>
