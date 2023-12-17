@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>T.Weather</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body>
+    <div class="header" th:each="cookie : ${#request.cookies}">
+      <p class="header-text" id="header-title">Weather</p>
+      <img class="header-img" src="https://avatars.mds.yandex.net/i?id=af6b16c483e28349cfca837c0077424eb4440d51-9151930-images-thumbs&n=13"/>
+      <a class="header-text" id="weather-for-10-days" href="https://yandex.ru/" target="_blank">Weather for 10 days</a>
+      <a class="header-text" id="weather-for-month" href="https://yandex.ru/">Weather for month</a>
+      <a class="header-text" id="precipitation-map" href="https://yandex.ru/">Precipitation map</a>
+      <form th:method="GET" th:action="@{/weather}">
+        <input id="city-input" placeholder="City or district" name="city">
+        <button class="button-loupe">search</button>
+      </form>
+      <a class="header-text" id="username" th:if="${cookie.name == 'username'}" th:text="${cookie.value}" href="/settings">username</a>
+      <img id="account-avatar" src="https://avatars.mds.yandex.net/get-yapic/0/0-0/islands-middle">
+    </div>
+    <div class="main">
+      <div class="weather-today">
+        <div class="weather-today-header">
+          <h1 class="weather-today-header-date" id="weather-today-header-date-today" th:text="${days[0]}">21</h1>
+          <p class="weather-today-header-month" id="weather-today-header-month-today" th:text="${months[0]}">november</p>
+          <h1 class="weather-today-header-date" id="weather-today-header-date-tomorrow" th:text="${days[1]}">22</h1>
+          <p class="weather-today-header-month"id="weather-today-header-month-tomorrow" th:text="${months[1]}">november</p>
+        </div>
+        <hr id="hr-horizontal">
+        <div class="weather-today-infomation-block" id="left">
+          <div class="weather-today-information-block-detailed" id="morning">
+            <p class="weather-today-information-block-detailed-time">Morning:</p>
+            <p class="weather-today-information-block-detailed-temperature" th:text="${tempToday[1]}">-5</p>
+            <p class="weather-today-infomation-block-detailed-weather" th:text="${weatherToday[1]}">Small snow</p>
+          </div>
+          <div class="weather-today-information-block-detailed" id="afternoon">
+            <p class="weather-today-information-block-detailed-time">Afternoon:</p>
+            <p class="weather-today-information-block-detailed-temperature" th:text="${tempToday[2]}">-5</p>
+            <p class="weather-today-infomation-block-detailed-weather" th:text="${weatherToday[2]}">Small snow</p>
+          </div>
+          <div class="weather-today-information-block-detailed" id="evening">
+            <p class="weather-today-information-block-detailed-time">Evening:</p>
+            <p class="weather-today-information-block-detailed-temperature" th:text="${tempToday[3]}">-5</p>
+            <p class="weather-today-infomation-block-detailed-weather" th:text="${weatherToday[3]}">Small snow</p>
+          </div>
+          <div class="weather-today-information-block-detailed" id="night">
+            <p class="weather-today-information-block-detailed-time">Night:</p>
+            <p class="weather-today-information-block-detailed-temperature" th:text="${tempToday[0]}">-5</p>
+            <p class="weather-today-infomation-block-detailed-weather" th:text="${weatherToday[0]}">Small snow</p>
+          </div>
+        </div>
+
+        <div id="vertical-hr"/>
+
+        <div class="weather-today-infomation-block" id="right">
+          <div class="weather-today-information-block-detailed" id="morning-next">
+            <p class="weather-today-information-block-detailed-time">Morning:</p>
+            <p class="weather-today-information-block-detailed-temperature" th:text="${tempTomorrow[1]}">-5</p>
+            <p class="weather-today-infomation-block-detailed-weather" th:text="${weatherTomorrow[1]}">Small snow</p>
+          </div>
+          <div class="weather-today-information-block-detailed" id="afternoon-next">
+            <p class="weather-today-information-block-detailed-time">Afternoon:</p>
+            <p class="weather-today-information-block-detailed-temperature" th:text="${tempTomorrow[2]}">-5</p>
+            <p class="weather-today-infomation-block-detailed-weather" th:text="${weatherTomorrow[2]}">Small snow</p>
+          </div>
+          <div class="weather-today-information-block-detailed" id="evening-next">
+            <p class="weather-today-information-block-detailed-time">Evening:</p>
+            <p class="weather-today-information-block-detailed-temperature" th:text="${tempTomorrow[3]}">-5</p>
+            <p class="weather-today-infomation-block-detailed-weather" th:text="${weatherTomorrow[3]}">Small snow</p>
+          </div>
+          <div class="weather-today-information-block-detailed" id="night-next">
+            <p class="weather-today-information-block-detailed-time">Night:</p>
+            <p class="weather-today-information-block-detailed-temperature" th:text="${tempTomorrow[0]}">-5</p>
+            <p class="weather-today-infomation-block-detailed-weather" th:text="${weatherTomorrow[0]}">Small snow</p>
+          </div>
+        </div>
+      </div>
+      <div class="weather-for-10-days-table">
+        <div class="for-10-days-table-header">
+          <p id="weather-for-10-days-table-text">Weather for 10 days</p>
+          <div class="detailed-weather-for-10-days-table">
+            <a class="detailed-text-for-10-days-table" href="https://ya.ru/" target="_blank">Detailed weather</a>
+          </div>
+          <div class="weather-for-month-table">
+            <a class="text-for-month-table" href="https://ya.ru/" target="_blank">Weather for month</a>
+          </div>
+        </div>
+        <div class="temperatures-block-table">
+          <div class="temperature-information-blocks" id="block-1">
+            <p class="temperature-information-blocks-week-days" th:text="${weekDays[0]}">Yest.</p>
+            <p class="temperature-information-blocks-days" th:text="${months[0] + ' ' + days[0]}">November 20</p>
+            <p class="temperature-information-blocks-temperature" th:text="${temp[0]}">-5</p>
+              <p class="temperature-information-blocks-weather" th:text="${weather[0]}">Snow</p>
+          </div>
+          <div class="temperature-information-blocks" id="block-2">
+            <p class="temperature-information-blocks-week-days" th:text="${weekDays[1]}">Yest.</p>
+            <p class="temperature-information-blocks-days" th:text="${months[1] + ' ' + days[1]}">November 20</p>
+            <p class="temperature-information-blocks-temperature" th:text="${temp[1]}">-5</p>
+            <p class="temperature-information-blocks-weather" th:text="${weather[1]}">Snow</p>
+          </div>
+          <div class="temperature-information-blocks" id="block-3">
+            <p class="temperature-information-blocks-week-days" th:text="${weekDays[2]}">Yest.</p>
+            <p class="temperature-information-blocks-days" th:text="${months[2] + ' ' + days[2]}">November 20</p>
+            <p class="temperature-information-blocks-temperature" th:text="${temp[2]}">-5</p>
+            <p class="temperature-information-blocks-weather" th:text="${weather[2]}">Snow</p>
+          </div>
+          <div class="temperature-information-blocks" id="block-4">
+            <p class="temperature-information-blocks-week-days" th:text="${weekDays[3]}">Yest.</p>
+            <p class="temperature-information-blocks-days" th:text="${months[3] + ' ' + days[3]}">November 20</p>
+            <p class="temperature-information-blocks-temperature" th:text="${temp[3]}">-5</p>
+            <p class="temperature-information-blocks-weather" th:text="${weather[3]}">Snow</p>
+          </div>
+          <div class="temperature-information-blocks" id="block-5">
+            <p class="temperature-information-blocks-week-days" th:text="${weekDays[4]}">Yest.</p>
+            <p class="temperature-information-blocks-days" th:text="${months[4] + ' ' + days[4]}">November 20</p>
+            <p class="temperature-information-blocks-temperature" th:text="${temp[4]}">-5</p>
+            <p class="temperature-information-blocks-weather" th:text="${weather[4]}">Snow</p>
+          </div>
+          <div class="temperature-information-blocks" id="block-6">
+            <p class="temperature-information-blocks-week-days" th:text="${weekDays[5]}">Yest.</p>
+            <p class="temperature-information-blocks-days" th:text="${months[5] + ' ' + days[5]}">November 20</p>
+            <p class="temperature-information-blocks-temperature" th:text="${temp[5]}">-5</p>
+            <p class="temperature-information-blocks-weather" th:text="${weather[5]}">Snow</p>
+          </div>
+          <div class="temperature-information-blocks" id="block-7">
+            <p class="temperature-information-blocks-week-days" th:text="${weekDays[6]}">Yest.</p>
+            <p class="temperature-information-blocks-days" th:text="${months[6] + ' ' + days[6]}">November 20</p>
+            <p class="temperature-information-blocks-temperature" th:text="${temp[6]}">-5</p>
+            <p class="temperature-information-blocks-weather" th:text="${weather[6]}">Snow</p>
+          </div>
+          <div class="temperature-information-blocks" id="block-8">
+            <p class="temperature-information-blocks-week-days" th:text="${weekDays[7]}">Yest.</p>
+            <p class="temperature-information-blocks-days" th:text="${months[7] + ' ' + days[7]}">November 20</p>
+            <p class="temperature-information-blocks-temperature" th:text="${temp[7]}">-5</p>
+            <p class="temperature-information-blocks-weather" th:text="${weather[7]}">Snow</p>
+          </div>
+          <div class="temperature-information-blocks" id="block-9">
+            <p class="temperature-information-blocks-week-days" th:text="${weekDays[8]}">Yest.</p>
+            <p class="temperature-information-blocks-days" th:text="${months[8] + ' ' + days[8]}">November 20</p>
+            <p class="temperature-information-blocks-temperature" th:text="${temp[8]}">-5</p>
+            <p class="temperature-information-blocks-weather" th:text="${weather[8]}">Snow</p>
+          </div>
+        </div>
+        <div class="sunset-and-weather-for-hours">
+          <div class="weather-for-hours">
+            <div class="weather-for-hours-header">
+              <h3>Weather for hours</h3>
+            </div>
+            <hr class="weather-for-hours-hr">
+            <div class="weather-for-hours-table">
+              <h1 id="city-name" th:text="${city}">Los-Angeles</h1>
+              <h1 id="temp-at-the-moment" th:text="${now[0]}">-18℃</h1>
+              <h1 id="weather-at-the-moment" th:text="${now[1]}">snow</h1>
+              <div class="weather-for-hours-table-city-column" id="first">
+                <div class="first-weather" id="first-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">00:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[0]}">-18</p>
+                </div>
+                <div class="first-weather" id="second-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">01:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[1]}">-18</p>
+                </div>
+                <div class="first-weather" id="third-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">02:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[2]}">-18</p>
+                </div>
+                <div class="first-weather" id="fourth-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">03:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[3]}">-18</p>
+                </div>
+                <div class="first-weather" id="fiveth-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">04:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[4]}">-18</p>
+                </div>
+                <div class="first-weather" id="sixth-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">05:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[5]}">-18</p>
+                </div>
+                <div class="first-weather" id="seventh-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">06:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[6]}">-18</p>
+                </div>
+                <div class="first-weather" id="eighth-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">07:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[7]}">-18</p>
+                </div>
+                <div class="first-weather" id="nineth-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">08:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[8]}">-18</p>
+                </div>
+                <div class="first-weather" id="tenth-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">09:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[9]}">-18</p>
+                </div>
+                <div class="first-weather" id="eleventh-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">10:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[10]}">-18</p>
+                </div>
+                <div class="first-weather" id="twelfth-weather-block-1">
+                  <p class="weather-for-hours-table-city-block-time">11:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[11]}">-18</p>
+                </div>
+              </div>
+              <div class="weather-for-hours-table-city-column" id="second">
+                <div class="first-weather" id="first-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">12:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[12]}">-18</p>
+                </div>
+                <div class="first-weather" id="second-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">13:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[13]}">-18</p>
+                </div>
+                <div class="first-weather" id="third-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">14:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[14]}">-18</p>
+                </div>
+                <div class="first-weather" id="fourth-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">15:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[15]}">-18</p>
+                </div>
+                <div class="first-weather" id="fiveth-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">16:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[16]}">-18</p>
+                </div>
+                <div class="first-weather" id="sixth-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">17:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[17]}">-18</p>
+                </div>
+                <div class="first-weather" id="seventh-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">18:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[18]}">-18</p>
+                </div>
+                <div class="first-weather" id="eighth-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">19:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[19]}">-18</p>
+                </div>
+                <div class="first-weather" id="nineth-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">20:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[20]}">-18</p>
+                </div>
+                <div class="first-weather" id="tenth-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">21:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[21]}">-18</p>
+                </div>
+                <div class="first-weather" id="eleventh-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">23:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[23]}">-18</p>
+                </div>
+                <div class="first-weather" id="twelfth-weather-block-2">
+                  <p class="weather-for-hours-table-city-block-time">22:00</p>
+                  <p class="weather-for-hours-table-city-block-temp" th:text="${tempForHours[22]}">-18</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sunset-and-sunrise">
+            <h3>Sunset and sunrise</h3>
+              <hr id="sunset-and-sunrise-hr">
+            <div class="sunset-and-sunrise-main-window">
+              <img src="https://avatars.mds.yandex.net/i?id=f114a185c9129e17019aef522fb1223cdc566c30-7882711-images-thumbs&n=13 " class="sunset-and-sunrise-img" фдalt="shit">
+              <h4 id="sunrise" th:text="${astro[0]}">7:00</h4>
+              <h4 id="sunset" th:text="${astro[1]}">18:00</h4>
+              <h5 id="sunrise-text">Sunrise</h5>
+              <h5 id="sunset-text">Sunset</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

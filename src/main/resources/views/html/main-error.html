@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>T.Weather</title>
+  <link rel="stylesheet" href="../css/main-error.css"/>
+</head>
+<body>
+<div class="header" th:each="cookie : ${#request.cookies}">
+  <p class="header-text" id="header-title">Weather</p>
+  <img class="header-img" src="https://avatars.mds.yandex.net/i?id=af6b16c483e28349cfca837c0077424eb4440d51-9151930-images-thumbs&n=13"/>
+  <a class="header-text" id="weather-for-10-days" href="https://yandex.ru/" target="_blank">Weather for 10 days</a>
+  <a class="header-text" id="weather-for-month" href="https://yandex.ru/">Weather for month</a>
+  <a class="header-text" id="precipitation-map" href="https://yandex.ru/">Precipitation map</a>
+  <form th:method="GET" th:action="@{/weather}">
+    <input id="city-input" placeholder="City or district" name="city">
+    <button class="button-loupe">search</button>
+  </form>
+  <p class="header-text" id="username" th:if="${cookie.name == 'username'}" th:text="${cookie.value}">username</p>
+  <img id="account-avatar" src="https://avatars.mds.yandex.net/get-yapic/0/0-0/islands-middle">
+</div>
+<div class="main">
+  <h1 class="Error text" style="font-size:70px;"> Information for this city is not aviable</h1>
+</div>
+</body>
+</html>

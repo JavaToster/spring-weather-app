@@ -1,0 +1,92 @@
+body{
+  background-color: #F5F5F5;
+}
+.header{
+  background-color: #FFF;
+  height: 60px;
+  margin: 0;
+  position: absolute;
+  top: 0px;
+  width: 1872px;
+  left: 0px;
+}
+.header-text{
+  position: absolute;
+  margin: 0;
+}
+.header-img{
+  position: absolute;
+  left: 235px;
+  top: 18px;
+  width: 30px;
+  height: 30px;
+}
+#header-title{
+  font-size: 30px;
+  top: 15px;
+  margin: 0;
+  left: 270px;
+  font-weight: 800;
+}
+#weather-for-10-days{
+  font-size: 21px;
+  left: 440px;
+  top: 21px;
+  text-decoration: none;
+  color: black;
+}
+#weather-for-month{
+  font-size: 21px;
+  left: 630px;
+  top: 22px;
+  text-decoration: none;
+  color: black;
+}
+#precipitation-map{
+  font-size: 21px;
+  left: 820px;
+  top: 22px;
+  text-decoration: none;
+  color: black;
+}
+#city-input{
+  position: absolute;
+  top: 15px;
+  left: 1010px;
+  height: 35px;
+  width: 400px;
+  border-radius: 7px;
+  border: none;
+  background-color: #E5E4E2;
+}
+#username{
+  left: 1590px;
+  top: 15px;
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+}
+#account-avatar{
+  position: absolute;
+  left: 1700px;
+  top: 5px;
+  width: 50px;
+  height: 50px;
+}
+.main{
+  position: absolute;
+  top: 350px;
+  left: 400px;
+  width: 1180px;
+  height: 850px;
+}
+.button-loupe{
+  height: 20px;
+  width: 55px;
+  position: absolute;
+  top: 23px;
+  left: 1350px;
+  background-color: #E5E4E2;
+  border-width: 1px;
+  border-radius: 10px;
+}

@@ -1,0 +1,7 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/src/main/resources/database/database.properties
+/src/main/java/spring/app/weather/Test.java
+/src/main/java/spring/app/DATABASE/Test.java
+/target/

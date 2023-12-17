@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title>Settings</title>
+    <link rel="stylesheet" href="../css/settings.css">
+  </head>
+  <body>
+    <div class="header" th:each="cookie : ${#request.cookies}">
+      <p class="header-text" id="header-title">Weather</p>
+      <img class="header-img" src="https://avatars.mds.yandex.net/i?id=af6b16c483e28349cfca837c0077424eb4440d51-9151930-images-thumbs&n=13"/>
+      <a class="header-text" id="weather-for-10-days" href="https://yandex.ru/" target="_blank">Weather for 10 days</a>
+      <a class="header-text" id="weather-for-month" href="https://yandex.ru/">Weather for month</a>
+      <a class="header-text" id="precipitation-map" href="https://yandex.ru/">Precipitation map</a>
+      <form th:method="GET" th:action="@{/weather}">
+        <input id="city-input" placeholder="City or district" name="city">
+        <button class="button-loupe">search</button>
+      </form>
+      <a class="header-text" id="username" th:if="${cookie.name == 'username'}" th:text="${cookie.value}" href="/weather">username</a>
+      <img id="account-avatar" src="https://avatars.mds.yandex.net/get-yapic/0/0-0/islands-middle">
+    </div>
+    <div class="main">
+      <div class="settings-column" id="first-column">
+        <div class="settings-conteiner" id="first-container">
+          <h2 id="account-text">Account</h2>
+          <hr class="break"/>
+          
+        </div>
+        <div class="settings-conteiner" id="second-container">
+
+        </div>
+        <div class="settings-conteiner" id="third-container">
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

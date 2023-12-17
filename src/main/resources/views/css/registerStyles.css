@@ -1,0 +1,62 @@
+body {
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+.register-container {
+    width: 300px;
+    padding: 16px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 250px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #4a4a4a;
+}
+
+.input-container {
+    margin-bottom: 10px;
+}
+
+label {
+    color: #9a9a9a;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+#register {
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: 25px;
+}
+
+.button{
+  color: white;
+  background-color: #f24d26;
+  border: none;
+}
+
+button:hover {
+    opacity:1;
+}
+
+#toLogin{
+    margin-left: 100px;
+    border-radius: 20px;
+    height: 25px;
+    width: 100px;
+}

@@ -1,0 +1,602 @@
+body{
+  background-color: #F5F5F5;
+}
+.header{
+  background-color: #FFF;
+  height: 60px;
+  margin: 0;
+  position: absolute;
+  top: 0px;
+  width: 1872px;
+  left: 0px;
+}
+.header-text{
+  position: absolute;
+  margin: 0;
+}
+.header-img{
+  position: absolute;
+  left: 235px;
+  top: 18px;
+  width: 30px;
+  height: 30px;
+}
+#header-title{
+  font-size: 30px;
+  top: 15px;
+  margin: 0;
+  left: 270px;
+  font-weight: 800;
+}
+#weather-for-10-days{
+  font-size: 21px;
+  left: 440px;
+  top: 21px;
+  text-decoration: none;
+  color: black;
+}
+#weather-for-month{
+  font-size: 21px;
+  left: 630px;
+  top: 22px;
+  text-decoration: none;
+  color: black;
+}
+#precipitation-map{
+  font-size: 21px;
+  left: 820px;
+  top: 22px;
+  text-decoration: none;
+  color: black;
+}
+#city-input{
+  position: absolute;
+  top: 15px;
+  left: 1010px;
+  height: 35px;
+  width: 400px;
+  border-radius: 7px;
+  border: none;
+  background-color: #E5E4E2;
+}
+#username{
+  left: 1590px;
+  top: 15px;
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+}
+#account-avatar{
+  position: absolute;
+  left: 1700px;
+  top: 5px;
+  width: 50px;
+  height: 50px;
+}
+.main{
+  position: absolute;
+  top: 80px;
+  left: 235px;
+  width: 1180px;
+  height: 880px;
+  /* background-color: black; */
+}
+.weather-for-10-days-table{
+  background-color: #FFF;
+  position: absolute;
+  top: 450px;
+  border-radius: 10px;
+  width: 1180px;
+  height: 200px;
+}
+#weather-for-10-days-table-text{
+  font-size: 25px;
+  font-weight: 900;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+.detailed-weather-for-10-days-table{
+  position: absolute;
+  top: 15px;
+  left: 270px;
+  background-color: #DCDCDC;
+  width: 160px;
+  height: 24px;
+  border-radius: 10px;
+}
+.detailed-text-for-10-days-table{
+  position: absolute;
+  top: 2px;
+  margin-left: 15px;
+  font-size: 19px;
+  text-decoration: none;
+  color: black;
+}
+.text-for-month-table{
+  position: absolute;
+  top: 2px;
+  margin-left: 15px;
+  font-size: 19px;
+  text-decoration: none;
+  color: black;
+}
+.weather-for-month-table{
+  position: absolute;
+  top: 15px;
+  left: 450px;
+  background-color: #DCDCDC;
+  width: 170px;
+  height: 24px;
+  border-radius: 10px;
+}
+.for-10-days-table-header{
+  position: absolute;
+  width: 1180px;
+  height: 50px;
+}
+.temperatures-block-table{
+  position:absolute;
+  top: 50px;
+  width: 1180px;
+  height: 150px;
+}
+.temperature-information-blocks{
+  position: absolute;
+  border-radius: 20px;
+  width: 118px;
+  height:150px;
+}
+#block-1{
+  left:20px;
+}
+
+#block-2{
+  left: 148px;
+}
+
+#block-3{
+  left: 276px;
+}
+
+#block-4{
+  left: 404px;
+}
+
+#block-5{
+  left: 532px;
+}
+
+#block-6{
+  left: 660px;
+}
+
+#block-7{
+  left: 788px;
+}
+
+#block-8{
+  left: 916px;
+}
+
+#block-9{
+  left: 1044px;
+}
+
+.temperature-information-blocks-week-days{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin-top: 0px;
+  font-size: 18px;
+}
+
+.temperature-information-blocks-days{
+  position: absolute;
+  top: 13px;
+  left: 10px;
+}
+
+.temperature-information-blocks-temperature{
+  position: absolute;
+  margin: 0;
+  top: 65px;
+  left: 20px;
+  font-size: 40px;
+}
+
+.temperature-information-blocks-weather{
+  position: absolute;
+  margin: 0;
+  top: 115px;
+  left: 35px;
+  font-size: 16px;
+}
+
+.weather-today{
+  background-color: #FFF;
+  border-radius: 10px;
+  width: 1180px;
+  height: 430px;
+}
+
+.weather-today-header{
+  /* background-color: red; */
+  border-radius: 10px;
+  width: 1180px;
+  height: 80px;
+}
+
+#weather-today-header-date-today{
+  top: 15px;
+  left: 20px;
+}
+
+#weather-today-header-month-today{
+  top: 25px;
+  left: 70px;
+}
+
+#weather-today-header-date-tomorrow{
+  top: 15px;
+  left: 610px;
+}
+
+#weather-today-header-month-tomorrow{
+  top: 25px;
+  left: 660px;
+}
+
+.weather-today-header-date{
+  position: absolute;
+  margin: 0;
+  font-size: 40px;
+}
+
+.weather-today-header-month{
+  position: absolute;
+  margin: 0;
+  font-size: 20px;
+
+}
+
+#hr-horizontal{
+  margin: 0;
+  position: absolute;
+  top: 75px;
+  width: 1140px;
+  left: 20px;
+}
+
+.weather-today-infomation-block{
+  position: absolute;
+  width: 571px;
+  height: 310px;
+}
+
+.weather-today-information-block-detailed{
+  position: absolute;
+  /* background-color: blue; */
+  width: 531px;
+  height: 60px;
+  left: 20px;
+}
+
+#morning{
+  top: 20px;
+}
+
+#afternoon{
+  top: 90px;
+}
+
+#evening{
+  top: 160px;
+}
+
+#night{
+  top: 230px;
+}
+#morning-next{
+  top: 20px;
+}
+
+#afternoon-next{
+  top: 90px;
+}
+
+#evening-next{
+  top: 160px;
+}
+
+#night-next {
+  top: 230px;
+}
+
+.weather-today-information-block-detailed-time{
+  font-size: 20px;
+  position: absolute;
+  margin: 0px;
+  top: 17px;
+  left: 10px;
+}
+
+.weather-today-information-block-detailed-temperature{
+  margin: 0;
+  position: absolute;
+  top: 18px;
+  left: 110px;
+  font-size: 20px;
+}
+
+.weather-today-infomation-block-detailed-weather{
+  font-size: 20px;
+  margin: 0;
+  position: absolute;
+  top: 17px;
+  left: 220px;
+}
+
+#left{
+  margin: 0;
+  top: 81px;
+  left: 20px;
+}
+
+#right{
+  top: -14px;
+  left: 10px;
+  margin: 0;
+}
+
+#vertical-hr{
+  margin: 0;
+  border-left: 1px solid black;
+  position: absolute;
+  top: 95px;
+  left: 600px;
+  height: 300px;
+}
+
+
+.button-loupe{
+  height: 20px;
+  width: 55px;
+  position: absolute;
+  top: 23px;
+  left: 1350px;
+  background-color: #E5E4E2;
+  border-width: 1px;
+  border-radius: 10px;
+}
+
+.sunset-and-weather-for-hours{
+  position: absolute;
+  top: 220px;
+  /* background-color: red; */
+  width: 1180px;
+  height: 330px;
+}
+
+.weather-for-hours{
+  position: absolute;
+  background-color: #FFF;
+  width: 930px;
+  height: 330px;
+  border-radius: 10px;
+}
+
+.sunset-and-sunrise{
+  position: absolute;
+  width: 250px;
+  height: 330px;
+  background-color: #FFF;
+  right: 0;
+  border-radius: 10px;
+}
+
+.weather-for-hours-hr{
+  width: 890px;
+  position: absolute;
+  top: 30px;
+  left: 20px;
+}
+
+.weather-for-hours-header{
+  position: absolute;
+  top: 2px;
+  /* background-color: black; */
+  width: 775px;
+  height: 35px;
+}
+
+h3{
+  position: absolute;
+  top: -10px;
+  left: 25px;
+}
+
+#weather-for-hours-table-city{
+  position: absolute;
+  top: 35px;
+  left: 25px;
+}
+
+.weather-for-hours-table-city-column{
+  width: 775;
+  height: 70px;
+}
+
+#first{
+  /* background-color: red; */
+  margin-top: 190px;
+  margin-bottom: 0px;
+}
+
+#second{
+  /* background-color: blue; */
+}
+
+.first-weather{
+  position: absolute;
+  background-color: white;
+  width: 77.5px;
+  height: 70px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+#second-weather-block-1{
+  left: 77.5px;
+}
+
+#third-weather-block-1{
+  left:  155px;
+}
+
+#fourth-weather-block-1{
+  left: 232.5px;
+}
+
+#fiveth-weather-block-1{
+  left: 310px;
+}
+
+#sixth-weather-block-1{
+  left: 387.5px;
+}
+
+#seventh-weather-block-1{
+  left: 465px;
+}
+
+#eighth-weather-block-1{
+  left: 542.5px;
+}
+
+#nineth-weather-block-1{
+  left: 620px;
+}
+
+#tenth-weather-block-1{
+  left: 697.5px;
+}
+
+#eleventh-weather-block-1{
+  right: 0px;
+}
+
+#twelfth-weather-block-1{
+  right: 77.5px;
+}
+
+#second-weather-block-2{
+  left: 77.5px;
+}
+
+#third-weather-block-2{
+  left:  155px;
+}
+
+#fourth-weather-block-2{
+  left: 232.5px;
+}
+
+#fiveth-weather-block-2{
+  left: 310px;
+}
+
+#sixth-weather-block-2{
+  left: 387.5px;
+}
+
+#seventh-weather-block-2{
+  left: 465px;
+}
+
+#eighth-weather-block-2{
+  left: 542.5px;
+}
+
+#nineth-weather-block-2{
+  left: 620px;
+}
+
+#tenth-weather-block-2{
+  left: 697.5px;
+}
+
+#eleventh-weather-block-2{
+  right: 0px;
+}
+
+#twelfth-weather-block-2{
+  right: 77.5px;
+}
+
+.weather-for-hours-table-city-block-time{
+  margin-top: 10px;
+  margin-left: 18px;
+  margin-bottom: 0;
+}
+
+.weather-for-hours-table-city-block-temp{
+  margin-top: 10px;
+  margin-left: 24px;
+}
+
+#city-name{
+  position: absolute;
+  bottom: 220px;
+  left: 20px;
+}
+
+#temp-at-the-moment{
+  position: absolute;
+  bottom: 170px;
+  left: 20px;
+}
+
+#weather-at-the-moment{
+  position: absolute;
+  bottom: 173px;
+  left: 150px;
+}
+
+#sunset-and-sunrise-hr{
+  position: absolute;
+  top:30px;
+  left: 20px;
+  width: 210px;
+}
+
+.sunset-and-sunrise-img{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 70px;
+  left: 70px;
+}
+
+#sunrise{
+  position: absolute;
+  top: 200px;
+  left: 30px;
+}
+
+#sunset{
+  position: absolute;
+  top: 200px;
+  right: 30px;
+}
+
+#sunrise-text{
+  position: absolute;
+  top: 230px;
+  left: 30px;
+}
+
+#sunset-text{
+  position: absolute;
+  top: 230px;
+  right: 30px;
+}
