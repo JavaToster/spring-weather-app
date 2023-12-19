@@ -60,7 +60,7 @@ public class GetInfo {
         String[] columnLabel = {"weathertoday", "weathertomorrow", "weatherfortendays"};
 
         for(int i = 0; i<3; i++){
-            weather[i] = this.resultSet.getString(columnLabel[i]).split(":");
+            weather[i] = this.resultSet.getString(columnLabel[i]).split("%");
         }
 
         return weather;
@@ -72,7 +72,7 @@ public class GetInfo {
         String[] columnLabel = {"temptoday", "temptomorrow", "tempfortendays"};
 
         for(int i = 0; i<3  ; i++){
-            temp[i] = this.resultSet.getString(columnLabel[i]).split(":");
+            temp[i] = this.resultSet.getString(columnLabel[i]).split("%");
         }
 
         return temp;
@@ -81,15 +81,15 @@ public class GetInfo {
     public String[][] getWeatherAndAstro() throws SQLException{
         String[][] astroAndWeatherNow = new String[2][2];
 
-        System.out.println("All Okay!!!");
+        System.out.println(resultSet.getString("sunsetAndSunrise"));
 
-        astroAndWeatherNow[0] = resultSet.getString("sunsetAndSunrise").split(":");
-        astroAndWeatherNow[1] = resultSet.getString("tempAndWeatherNow").split(":");
+        astroAndWeatherNow[0] = resultSet.getString("sunsetAndSunrise").split("%");
+        astroAndWeatherNow[1] = resultSet.getString("tempAndWeatherNow").split("%");
 
         return astroAndWeatherNow;
     }
 
     public String[] getTempForHours() throws SQLException{
-        return resultSet.getString("tempForHours").split(":");
+        return resultSet.getString("tempForHours").split("%");
     }
 }

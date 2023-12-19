@@ -112,7 +112,7 @@ public class AddInfoToDatabase extends Thread{
                 answer.append(array[i]);
                 continue;
             }
-            answer.append(array[i]).append(":");
+            answer.append(array[i]).append("%");
         }
 
         return answer.toString();
